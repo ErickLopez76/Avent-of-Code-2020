@@ -1,0 +1,30 @@
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+)
+
+func main() {
+	file, err := os.Open("./input.test.txt")
+	if err != nil {
+		println("Error, cant read file")
+	}
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+	for scanner.Scan() {
+		fmt.Println(scanner.Text())
+		fmt.Println(evaluateString(scanner.Text()))
+	}
+}
+
+func evaluateString(currentString string) bool {
+	ninit, nend := getRange()
+	fmt.Printf("init:%d, end:%d\n", ninit, nend)
+	return true
+}
+func getRange() (ninit, nend int) {
+	return 1, 2
+}
